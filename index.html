@@ -351,6 +351,9 @@
         const audio1 = document.getElementById("audio1");
         const audio2 = document.getElementById("audio2");
 
+        audio1.volume = 0.1;
+        audio2.volume = 0.1;
+
         // Start Music 1 on first interaction (required by browsers)
         document.body.addEventListener('click', () => {
             if (audio1.paused && yayCard.classList.contains('hidden')) {
@@ -491,3 +494,4 @@
 </body>
 
 </html>
+
