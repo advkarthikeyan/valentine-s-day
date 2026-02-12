@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Valentine 💘</title>
+    <style>
+        :root {
+            --pink1: #ffd6e8;
+            --pink2: #ffe8f2;
+            --ink: #1e1e1e;
+            --muted: #444;
+            --yes: #e83a5a;
+            --yes2: #ff5c7a;
+            --card: rgba(255, 255, 255, 0.78);
+            --shadow: 0 18px 60px rgba(0, 0, 0, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+            color: var(--ink);
+            background:
+                radial-gradient(1200px 600px at 20% 20%, var(--pink1), transparent 60%),
+                radial-gradient(1000px 600px at 80% 70%, var(--pink2), transparent 55%),
+                linear-gradient(135deg, #ffeef6, #fbe7ff);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* floating hearts */
+        .hearts {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: .45;
+        }
+
+        .heart {
+            position: absolute;
+            animation: floatUp linear infinite;
+            transform: translateY(120vh);
+        }
+
+        @keyframes floatUp {
+            from {
+                transform: translateY(120vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: .9;
+            }
+
+            to {
+                transform: translateY(-20vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .wrap {
+            width: min(980px, 92vw);
+            padding: 28px 18px;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 26px;
+            box-shadow: var(--shadow);
+            padding: clamp(22px, 4.5vw, 44px);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .banner {
+            position: absolute;
+            inset: auto 0 0 0;
+            height: 74px;
+            background: linear-gradient(90deg, rgba(255, 174, 205, .55), rgba(255, 255, 255, 0));
+            transform: translateY(28px);
+            opacity: .6;
+        }
+
+        h1 {
+            margin: 6px 0 8px;
+            font-size: clamp(34px, 5vw, 58px);
+            line-height: 1.05;
+            letter-spacing: .3px;
+        }
+
+        .sub {
+            margin: 0 auto 22px;
+            max-width: 720px;
+            font-size: clamp(16px, 2.1vw, 20px);
+            color: var(--muted);
+        }
+
+        /* --- UPDATED NAME STYLING --- */
+        .name {
+            font-weight: 900;
+            color: #ff1493; /* Deep Pink */
+            display: inline-block;
+            font-size: 1.1em;
+            text-shadow: 2px 2px 4px rgba(232, 58, 90, 0.2);
+            animation: heartbeat 1.2s infinite;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            14% { transform: scale(1.15); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.15); }
+            70% { transform: scale(1); }
+        }
+        /* ---------------------------- */
+
+        .row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            margin-top: 18px;
+            min-height: 110px;
+            position: relative;
+        }
+
+        .no-slot {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: default;
+        }
+
+        .yes-slot {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .no {
+            position: static;
+            min-width: 120px;
+        }
+
+        .no.evading {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        button {
+            border: 0;
+            padding: 14px 26px;
+            font-size: 18px;
+            border-radius: 14px;
+            transition: transform .08s ease, box-shadow .15s ease, background .2s ease;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .yes {
+            background: linear-gradient(180deg, var(--yes2), var(--yes));
+            color: #fff;
+            box-shadow: 0 10px 22px rgba(232, 58, 90, 0.35);
+            min-width: 120px;
+            font-weight: 700;
+        }
+
+        .yes:hover {
+            box-shadow: 0 14px 28px rgba(232, 58, 90, 0.45);
+            cursor: pointer;
+        }
+
+        .tiny-hearts {
+            display: inline-flex;
+            gap: 6px;
+            margin-left: 10px;
+            vertical-align: middle;
+            transform: translateY(-2px);
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .yay {
+            font-size: clamp(44px, 6vw, 76px);
+            margin: 8px 0 10px;
+            letter-spacing: 1px;
+        }
+
+        .yayline {
+            font-size: clamp(18px, 2.2vw, 22px);
+            color: var(--muted);
+            margin: 0 0 18px;
+        }
+
+        .gifbox {
+            width: min(280px, 70vw);
+            max-height: 300px;
+            margin: 12px auto 18px;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        .gifbox img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .love {
+            margin-top: 10px;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .confetti {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 5;
+        }
+
+        .confetti i {
+            position: absolute;
+            width: 10px;
+            height: 16px;
+            opacity: 0;
+            border-radius: 3px;
+            animation: confettiFall 1.8s ease-in infinite;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(-30vh) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(110vh) rotate(540deg);
+                opacity: 0;
+            }
+        }
+
+        .hint {
+            margin-top: 16px;
+            font-size: 13px;
+            color: rgba(0, 0, 0, 0.45);
+        }
+    </style>
+</head>
+
+<body>
+    <audio id="audio1" loop>
+        <source src="https://files.catbox.moe/2dfc75.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="audio2" loop>
+        <source src="https://files.catbox.moe/absc6m.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="hearts" aria-hidden="true" id="hearts"></div>
+
+    <div class="wrap">
+        <div class="card" id="askCard">
+            <div class="banner"></div>
+            <h1>
+                <span class="name" id="who">Varshini</span>,<br />will you be my Valentine?
+                <span class="tiny-hearts" aria-hidden="true"><span>💗</span><span>💞</span></span>
+            </h1>
+            <p class="sub">Choose wisely. (The “No” button is… shy!)</p>
+
+            <div class="row" id="playground">
+                <div class="yes-slot" id="yesSlot">
+                    <button class="yes" id="yesBtn">YES</button>
+                </div>
+
+                <div class="no-slot" id="noSlot">
+                    <button class="no" id="noBtn">NO</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card hidden" id="yayCard">
+            <h2 class="yay">💖 YAY!!! 💖</h2>
+            <p class="yayline">Best decision ever Darling 😘</p>
+
+            <div class="gifbox">
+                <img alt="Celebration" src="https://media.tenor.com/5T24_rbk7vYAAAAM/bubu-dudu-kisses.gif" />
+            </div>
+
+            <div class="love">I love you 💕❤️🌹</div>
+        </div>
+    </div>
+
+    <div class="confetti hidden" id="confetti" aria-hidden="true"></div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const myParam = urlParams.get('name');
+        const WIFE_NAME = myParam || "Varshini"; // Defaults to Varshini if no URL param is found
+
+        const EVADE_DISTANCE = 50;
+        const MOVE_MS = 140;
+        let evasionStarted = false;
+        let resetTimer;
+
+        document.getElementById("who").textContent = WIFE_NAME;
+
+        const askCard = document.getElementById("askCard");
+        const yayCard = document.getElementById("yayCard");
+        const yesBtn = document.getElementById("yesBtn");
+        const noBtn = document.getElementById("noBtn");
+        const playground = document.getElementById("playground");
+        const confetti = document.getElementById("confetti");
+        const noSlot = document.getElementById("noSlot");
+        
+        // Audio Controls
+        const audio1 = document.getElementById("audio1");
+        const audio2 = document.getElementById("audio2");
+
+        // Start Music 1 on first interaction (required by browsers)
+        document.body.addEventListener('click', () => {
+            if (audio1.paused && yayCard.classList.contains('hidden')) {
+                audio1.play();
+            }
+        }, { once: true });
+
+        // Logic Change: Must click first to start evasion
+        noBtn.addEventListener("click", (e) => {
+            if (!evasionStarted) {
+                moveNoRandom(true);
+                setFunnyNoText();
+            }
+        });
+
+        noBtn.addEventListener("pointerdown", (e) => {
+            if (evasionStarted) {
+                e.preventDefault();
+                moveNoRandom(true);
+                if(isMobileLike()){
+                    setFunnyNoText();
+                }
+            }
+        });
+
+        noBtn.addEventListener("mouseenter", (e) => {
+            if (evasionStarted) {
+                e.preventDefault();
+                moveNoRandom(true);
+                setFunnyNoText();
+            }
+        });
+
+        yesBtn.addEventListener("click", () => {
+            askCard.classList.add("hidden");
+            yayCard.classList.remove("hidden");
+            
+            // Switch Audio
+            audio1.pause();
+            audio2.play();
+            
+            startConfetti();
+        });
+
+        const funnyNoTexts = [
+            "This could be a mistake!",
+            "Think again 😶‍🌫️",
+            "Don’t do this to me 💔",
+            "Give it another thought!",
+            "You might regret this!",
+            "Really sure ?",
+            "Surely not!",
+            "Last chance! 😬",
+            "Are you absolutely certian? 🙅‍♂️",
+            "I will cry 😭",
+            "Please no 🥺",
+            "👈Try another Button!",
+        ];
+        let lastNoTextIndex = -1;
+
+        function setFunnyNoText() {
+            let idx = Math.floor(Math.random() * funnyNoTexts.length);
+            if (idx === lastNoTextIndex) idx = (idx + 1) % funnyNoTexts.length;
+            lastNoTextIndex = idx;
+
+            noBtn.textContent = funnyNoTexts[idx];
+
+            clearTimeout(resetTimer);
+            resetTimer = setTimeout(() => {
+                // Modified to only reset text if button is actually evading
+                if (evasionStarted) noBtn.textContent = funnyNoTexts[idx];
+            }, 1200);
+        }
+
+        function isMobileLike() {
+            const coarsePointer = matchMedia("(pointer: coarse)").matches;
+            const noHover = matchMedia("(hover: none)").matches;
+            const smallViewport = Math.min(window.innerWidth, window.innerHeight) <= 768;
+            return (coarsePointer && noHover) || smallViewport;
+        }
+
+        function moveNoRandom(extraFar = false) {
+            const bounds = noSlot.getBoundingClientRect();
+            const bw = bounds.width;
+            const bh = bounds.height;
+            const br = noBtn.getBoundingClientRect();
+            const w = br.width;
+            const h = br.height;
+
+            if (!evasionStarted) {
+                evasionStarted = true;
+                noBtn.classList.add("evading");
+                noBtn.style.transform = "none";
+            }
+
+            const maxX = Math.max(0, bw - w);
+            const maxY = Math.max(0, bh - h);
+
+            let x = Math.random() * maxX;
+            let y = Math.random() * maxY;
+
+            noBtn.style.transition = `left ${MOVE_MS}ms ease, top ${MOVE_MS}ms ease`;
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
+        }
+
+        // Floating hearts
+        const hearts = document.getElementById("hearts");
+        const heartEmojis = ["💗", "💖", "💞", "💕", "💘"];
+        for (let i = 0; i < 22; i++) {
+            const s = document.createElement("span");
+            s.className = "heart";
+            s.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+            s.style.left = Math.random() * 100 + "vw";
+            s.style.animationDuration = (7 + Math.random() * 9) + "s";
+            s.style.animationDelay = (-Math.random() * 10) + "s";
+            s.style.fontSize = (16 + Math.random() * 16) + "px";
+            hearts.appendChild(s);
+        }
+
+        // Confetti
+        function startConfetti() {
+            confetti.classList.remove("hidden");
+            confetti.innerHTML = "";
+            const pieces = 80;
+            for (let i = 0; i < pieces; i++) {
+                const p = document.createElement("i");
+                p.style.left = (Math.random() * 100) + "vw";
+                p.style.animationDelay = (Math.random() * 1.2) + "s";
+                p.style.animationDuration = (1.4 + Math.random() * 1.5) + "s";
+                const hue = Math.floor(Math.random() * 360);
+                p.style.background = `hsl(${hue} 90% 60%)`;
+                confetti.appendChild(p);
+            }
+            setTimeout(() => confetti.classList.add("hidden"), 7000);
+        }
+    </script>
+</body>
+
+</html>
